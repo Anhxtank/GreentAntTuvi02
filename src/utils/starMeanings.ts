@@ -1,0 +1,357 @@
+export interface StarMeaning {
+  hoaKhi: string;
+  haoVi?: string;
+  vi?: string;
+  meanings: Record<string, { left: string; right: string }>;
+}
+
+export const STAR_MEANINGS: Record<string, StarMeaning> = {
+  "Tử Vi": {
+    hoaKhi: "Tôn Quý",
+    meanings: {
+      "MỆNH": { left: "Bách quan triều củng", right: "Tại dã cô quân" },
+      "PHỤ MẪU": { left: "Uy quyền - Nghiêm khắc", right: "Chuyên quyền - Độc đoán" },
+      "PHÚC ĐỨC": { left: "Quyết đoán - Lãnh đạo", right: "Độc đoán - Cô độc" },
+      "ĐIỀN TRẠCH": { left: "Tự mua - Chung đụng", right: "Tự gây biến động" },
+      "QUAN LỘC": { left: "Tự lập danh vọng", right: "Cơ động - Đa nhiệm" },
+      "GIAO HỮU": { left: "Hữu dụng", right: "Lạm quyền" },
+      "THIÊN DI": { left: "Trợ lực - Kính trọng", right: "Hiếu động" },
+      "TẬT ÁCH": { left: "Tuyến tụy", right: "Gan - Ngón tay" },
+      "TÀI BẠCH": { left: "Danh dự - Hữu danh", right: "Vô danh - Danh hão" },
+      "TỬ NỮ": { left: "Cá tính - Lãnh đạo", right: "Xung khắc - Cô độc" },
+      "PHU THÊ": { left: "Đắc trợ - Địa vị", right: "Độc đoán - Bạo ngược" },
+      "HUYNH ĐỆ": { left: "Được nhờ - Trợ lực", right: "Khó nhờ - Lợi dụng" }
+    }
+  },
+  "Thiên Cơ": {
+    hoaKhi: "Thiện",
+    meanings: {
+      "MỆNH": { left: "Phân phối - Đa tài", right: "Đa quản - Đa mang" },
+      "PHỤ MẪU": { left: "Biến động", right: "Xa cách" },
+      "PHÚC ĐỨC": { left: "Đa mưu - Đa học", right: "Lo lắng - Bồn chồn" },
+      "ĐIỀN TRẠCH": { left: "Tự lập - Vang danh", right: "Phá bại - Thay đổi" },
+      "QUAN LỘC": { left: "Cơ động - Đa nhiệm", right: "Trôi nổi - Bất ổn" },
+      "GIAO HỮU": { left: "Thay đổi - Đa giao", right: "Bất hòa - Tranh chấp" },
+      "THIÊN DI": { left: "Hiếu động", right: "Trôi nổi" },
+      "TẬT ÁCH": { left: "Gan - Ngón tay", right: "" },
+      "TÀI BẠCH": { left: "Cơ mưu - Đa tài", right: "Khổ tâm - Thất thường" },
+      "TỬ NỮ": { left: "Lý tưởng", right: "Ảo tưởng" },
+      "PHU THÊ": { left: "Tâm cơ - Tính toán", right: "Rối ren - Thủ đoạn" },
+      "HUYNH ĐỆ": { left: "Thiên giao - Xã giao", right: "Thiên giao - Xã giao" }
+    }
+  },
+  "Thái Dương": {
+    hoaKhi: "Quý",
+    meanings: {
+      "MỆNH": { left: "Quang Minh", right: "Khoe khoang" },
+      "PHỤ MẪU": { left: "Ấm áp - Che chở", right: "Hình khắc - Bất hòa" },
+      "PHÚC ĐỨC": { left: "Cởi mở - Hiếu động", right: "Nóng nảy - Bất an" },
+      "ĐIỀN TRẠCH": { left: "Tay trắng lập nghiệp", right: "Tranh chấp" },
+      "QUAN LỘC": { left: "Vang danh - Thịnh đạt", right: "Khoa trương - Phù phiếm" },
+      "GIAO HỮU": { left: "Nổi tiếng - Vang danh", right: "Danh nghĩa - Hình thức" },
+      "THIÊN DI": { left: "Phát phúc - Tha hương", right: "Bôn ba - Vất vả" },
+      "TẬT ÁCH": { left: "Thần kinh - Huyết áp", right: "" },
+      "TÀI BẠCH": { left: "Quý hiển - Lâu dài", right: "Phù phiếm - Trống rỗng" },
+      "TỬ NỮ": { left: "Thành danh", right: "Xa xỉ - Phù phiếm" },
+      "PHU THÊ": { left: "Quý hiển - Danh dự", right: "Hình khắc - Ô danh" },
+      "HUYNH ĐỆ": { left: "Thẳng thắn", right: "Soi mói" }
+    }
+  },
+  "Vũ Khúc": {
+    hoaKhi: "Tài",
+    meanings: {
+      "MỆNH": { left: "Hành động kiếm tiền", right: "Vị kỷ - Hình khắc" },
+      "PHỤ MẪU": { left: "Hòa hợp", right: "Đau buồn" },
+      "PHÚC ĐỨC": { left: "Thực tế - Thực dụng", right: "Tinh thần - Trống rỗng" },
+      "ĐIỀN TRẠCH": { left: "Bảo toàn", right: "Trù phú" },
+      "QUAN LỘC": { left: "Tài lực", right: "Thiếu vốn" },
+      "GIAO HỮU": { left: "Đắc lực", right: "Phá tài" },
+      "THIÊN DI": { left: "Đắc lợi nơi xa", right: "Phá sản - Tha hương" },
+      "TẬT ÁCH": { left: "Hô hấp", right: "" },
+      "TÀI BẠCH": { left: "Giàu có - Quyết đoán", right: "Phá tán - Liều lĩnh" },
+      "TỬ NỮ": { left: "Cứng rắn", right: "Hình khắc" },
+      "PHU THÊ": { left: "Phát triển", right: "Hình khắc" },
+      "HUYNH ĐỆ": { left: "Võ tính", right: "Võ tính" }
+    }
+  },
+  "Thiên Đồng": {
+    hoaKhi: "Phúc",
+    meanings: {
+      "MỆNH": { left: "Hưởng thụ", right: "Ý lại" },
+      "PHỤ MẪU": { left: "Độc lập", right: "Chia ly" },
+      "PHÚC ĐỨC": { left: "Hưởng thụ - Phong phú", right: "Tự mãn - Lạc thú" },
+      "ĐIỀN TRẠCH": { left: "Tán", right: "Tự dựng" },
+      "QUAN LỘC": { left: "Nhàn nhã", right: "Chậm chạp" },
+      "GIAO HỮU": { left: "Ôn hòa", right: "Thiếu lực" },
+      "THIÊN DI": { left: "Ổn định - Thoát ly", right: "Trắc trở - Xa nhà" },
+      "TẬT ÁCH": { left: "Bàng quang - Bài tiết", right: "" },
+      "TÀI BẠCH": { left: "Lập nghiệp - Nan khởi", right: "Hưởng thụ - Liên lụy" },
+      "TỬ NỮ": { left: "Cảm thông", right: "Nuông chiều" },
+      "PHU THÊ": { left: "Phát triển", right: "Thay đổi" },
+      "HUYNH ĐỆ": { left: "Hòa hợp", right: "Bất hòa" }
+    }
+  },
+  "Liêm Trinh": {
+    hoaKhi: "Tù",
+    meanings: {
+      "MỆNH": { left: "Cuồng nhiệt - Thủ đoạn", right: "Trôi nổi - Nóng nảy" },
+      "PHỤ MẪU": { left: "Tình cảm", right: "Hình thương" },
+      "PHÚC ĐỨC": { left: "Vui thú", right: "Lao tâm" },
+      "ĐIỀN TRẠCH": { left: "Thừa hưởng", right: "Đứng tên" },
+      "QUAN LỘC": { left: "Tay trắng lập nghiệp", right: "Không được thừa kế" },
+      "GIAO HỮU": { left: "Đa giao - Tình cảm", right: "Làm phúc phải tội" },
+      "THIÊN DI": { left: "Đắc ý - Kết giao", right: "Lao tâm - Tổn thương" },
+      "TẬT ÁCH": { left: "Máu huyết", right: "" },
+      "TÀI BẠCH": { left: "Cạnh tranh - Thủ đoạn", right: "Hào nhoáng - Màu mè" },
+      "TỬ NỮ": { left: "Sâu đậm", right: "Thất vọng" },
+      "PHU THÊ": { left: "Cuồng nhiệt - Bất hòa", right: "Khoa trương - Chèn ép" },
+      "HUYNH ĐỆ": { left: "Hòa hợp", right: "Kết thân - Trở mặt" }
+    }
+  },
+  "Thiên Phủ": {
+    hoaKhi: "Tài Đức",
+    meanings: {
+      "MỆNH": { left: "Phòng thủ", right: "Kho lộc" },
+      "PHỤ MẪU": { left: "Che chở", right: "Khiếm khuyết" },
+      "PHÚC ĐỨC": { left: "Cẩn trọng", right: "Mưu mô" },
+      "ĐIỀN TRẠCH": { left: "Ổn định", right: "Tự lập" },
+      "QUAN LỘC": { left: "Ổn định", right: "Bảo thủ" },
+      "GIAO HỮU": { left: "Trị giao", right: "Tin lầm" },
+      "THIÊN DI": { left: "Ổn định", right: "Trở ngại" },
+      "TẬT ÁCH": { left: "Tiêu hóa - Dạ dày", right: "" },
+      "TÀI BẠCH": { left: "Kế hoạch", right: "Sai sót" },
+      "TỬ NỮ": { left: "Ổn định", right: "Thất chí" },
+      "PHU THÊ": { left: "Ổn định", right: "Thờ ơ" },
+      "HUYNH ĐỆ": { left: "Ổn định", right: "Hình khắc - Thủ đoạn" }
+    }
+  },
+  "Thái Âm": {
+    hoaKhi: "Phúc",
+    haoVi: "6",
+    vi: "Thần minh - Quỷ thần",
+    meanings: {
+      "MỆNH": { left: "Hưởng thụ - Tinh thần", right: "Tiêu điều - Mặc cảm" },
+      "PHỤ MẪU": { left: "Yêu thương", right: "Chia lìa" },
+      "PHÚC ĐỨC": { left: "Nội tâm", right: "Thâm sâu" },
+      "ĐIỀN TRẠCH": { left: "Phá bại - Thay đổi", right: "Lụi bại - Chuyển rời" },
+      "QUAN LỘC": { left: "Kế hoạch - Quảng bá", right: "Đa đoan - Ảo tưởng" },
+      "GIAO HỮU": { left: "Hòa ái - Đắc dụng", right: "Hời hợt - Sơ giao" },
+      "THIÊN DI": { left: "Thích nghi", right: "Bất tiện - Tổn hại" },
+      "TẬT ÁCH": { left: "Thận - Thần kinh", right: "" },
+      "TÀI BẠCH": { left: "Thu vén - Hưởng thụ", right: "Thất thoát - Hao tâm" },
+      "TỬ NỮ": { left: "Tình cảm", right: "Nhu nhược" },
+      "PHU THÊ": { left: "Đa tình", right: "Đoạt tình" },
+      "HUYNH ĐỆ": { left: "Hòa hợp", right: "Vô tình" }
+    }
+  },
+  "Tham Lang": {
+    hoaKhi: "Dục",
+    meanings: {
+      "MỆNH": { left: "Dục vọng", right: "Tinh thần" },
+      "PHỤ MẪU": { left: "Phát phúc phương xa", right: "Đào hoa - Xa cách" },
+      "PHÚC ĐỨC": { left: "Phong lưu", right: "Thiên nghi" },
+      "ĐIỀN TRẠCH": { left: "Ô danh tổ nghiệp", right: "Bất ổn - Phá tán" },
+      "QUAN LỘC": { left: "Xã giao - Thẩm mỹ", right: "Tranh chấp - Sa đọa" },
+      "GIAO HỮU": { left: "Nghệ sĩ", right: "Sa đọa" },
+      "THIÊN DI": { left: "Hào hoa - Lãng tử", right: "Chơi bời - Trác táng" },
+      "TẬT ÁCH": { left: "Gan - Sinh dục", right: "" },
+      "TÀI BẠCH": { left: "Vận dụng - Đầu cơ", right: "Hoang phí - Xa hoa" },
+      "TỬ NỮ": { left: "Hòa hợp", right: "Bất hòa" },
+      "PHU THÊ": { left: "Tranh đấu", right: "Hình khắc - Điều tiếng" },
+      "HUYNH ĐỆ": { left: "Hòa hợp", right: "Bi lụy" }
+    }
+  },
+  "Cự Môn": {
+    hoaKhi: "Ám",
+    meanings: {
+      "MỆNH": { left: "Trọng lý", right: "Vô tinh" },
+      "PHỤ MẪU": { left: "Nghiêm khắc", right: "Hà khắc" },
+      "PHÚC ĐỨC": { left: "Tự thân", right: "Vọng tưởng" },
+      "ĐIỀN TRẠCH": { left: "Hao tán tốn phí", right: "Cường đoạt" },
+      "QUAN LỘC": { left: "Cạnh tranh", right: "Ganh đua" },
+      "GIAO HỮU": { left: "Khẩu tài", right: "Ganh đua" },
+      "THIÊN DI": { left: "Phấn đấu - Đề bạt", right: "Ganh đua - Kết oán" },
+      "TẬT ÁCH": { left: "Tiêu hóa - Hô hấp", right: "" },
+      "TÀI BẠCH": { left: "Ganh đua - Cạnh tranh", right: "Lao tâm - Kiện tụng" },
+      "TỬ NỮ": { left: "Tranh lý", right: "Hình khắc" },
+      "PHU THÊ": { left: "Tranh đấu", right: "Hình khắc - Điều tiếng" },
+      "HUYNH ĐỆ": { left: "Bất hòa", right: "Vô tình" }
+    }
+  },
+  "Thiên Tướng": {
+    hoaKhi: "Ấn",
+    meanings: {
+      "MỆNH": { left: "Tương hòa", right: "Xu thời" },
+      "PHỤ MẪU": { left: "Tương hòa", right: "Bất mãn" },
+      "PHÚC ĐỨC": { left: "Cảm thông", right: "Dễ xúi giục" },
+      "ĐIỀN TRẠCH": { left: "Mắc kẹt", right: "Phá tán" },
+      "QUAN LỘC": { left: "Ổn định", right: "Xu thời" },
+      "GIAO HỮU": { left: "Hảo hữu", right: "Bè phái" },
+      "THIÊN DI": { left: "Hợp tác", right: "Kết bè" },
+      "TẬT ÁCH": { left: "Bài tiết - Phong thấp", right: "" },
+      "TÀI BẠCH": { left: "Quản lý - Giám sát", right: "Tài sản - Phá án" },
+      "TỬ NỮ": { left: "Hòa hợp", right: "Lạnh nhạt" },
+      "PHU THÊ": { left: "Cùng tiến", right: "Cùng lùi" },
+      "HUYNH ĐỆ": { left: "Trợ lực", right: "Phiền lụy" }
+    }
+  },
+  "Thiên Lương": {
+    hoaKhi: "Ấm / Hình",
+    meanings: {
+      "MỆNH": { left: "Che chở - Tinh thần", right: "Cô khắc - Hình pháp" },
+      "PHỤ MẪU": { left: "Che chở", right: "Cô độc" },
+      "PHÚC ĐỨC": { left: "Thanh cao", right: "Lười biếng" },
+      "ĐIỀN TRẠCH": { left: "Tụ", right: "Tranh chấp" },
+      "QUAN LỘC": { left: "Quản lý xã hội", right: "Hình pháp kỷ luật" },
+      "GIAO HỮU": { left: "Quan cách", right: "Cô lập" },
+      "THIÊN DI": { left: "Che chở", right: "Bài xích" },
+      "TẬT ÁCH": { left: "Tỳ vị - Cơ gân - Zú", right: "" },
+      "TÀI BẠCH": { left: "Kế hoạch - Nắm quyền", right: "Soi mói - Đố kỵ" },
+      "TỬ NỮ": { left: "Đắc lực", right: "Hình khắc" },
+      "PHU THÊ": { left: "Nghiêm cẩn", right: "Phân ly" },
+      "HUYNH ĐỆ": { left: "Hòa ái", right: "Giả tạo" }
+    }
+  },
+  "Thất Sát": {
+    hoaKhi: "Quyền",
+    meanings: {
+      "MỆNH": { left: "Hình pháp", right: "Kỷ luật" },
+      "PHỤ MẪU": { left: "Tình", right: "Lý" },
+      "PHÚC ĐỨC": { left: "Sở trường", right: "Sở đoản" },
+      "ĐIỀN TRẠCH": { left: "Khó đòi", right: "Không ở" },
+      "QUAN LỘC": { left: "Cánh tả", right: "Cánh hữu" },
+      "GIAO HỮU": { left: "Trật tự", right: "Rối ren" },
+      "THIÊN DI": { left: "Thích nghi", right: "Tổn thất" },
+      "TẬT ÁCH": { left: "Hô hấp - Sức mạnh", right: "" },
+      "TÀI BẠCH": { left: "Khai sáng", right: "Mưu mô - Phí sức" },
+      "TỬ NỮ": { left: "Quật cường - Cô lập", right: "Kiêu ngạo - Khó bảo" },
+      "PHU THÊ": { left: "Nhanh - Sớm", right: "Chậm - Muộn" },
+      "HUYNH ĐỆ": { left: "Hữu trợ", right: "Vô trợ" }
+    }
+  },
+  "Phá Quân": {
+    hoaKhi: "Hao",
+    meanings: {
+      "MỆNH": { left: "Thay cũ - Đổi mới", right: "Bất chấp tất cả" },
+      "PHỤ MẪU": { left: "Độc lập", right: "Xa cách" },
+      "PHÚC ĐỨC": { left: "Quyết đoán", right: "Thành kiến" },
+      "ĐIỀN TRẠCH": { left: "Bất an", right: "Hao tán" },
+      "QUAN LỘC": { left: "Sáng lập", right: "Tối phá" },
+      "GIAO HỮU": { left: "Độc lập", right: "Cô độc" },
+      "THIÊN DI": { left: "Khai phá", right: "Trắc trở" },
+      "TẬT ÁCH": { left: "Tiểu đường - Bài tiết", right: "" },
+      "TÀI BẠCH": { left: "Khai sáng", right: "Bạo ngược" },
+      "TỬ NỮ": { left: "Tay trắng lập nghiệp", right: "Chia ly hao tán" },
+      "PHU THÊ": { left: "Chênh lệch", right: "Bất ổn" },
+      "HUYNH ĐỆ": { left: "Cùng nhau khai phá", right: "Trở mặt - Đổ vỡ" }
+    }
+  }
+};
+
+export const MINOR_STAR_MEANINGS: Record<string, string> = {
+  "Tả Phù": "Chủ về sự trợ giúp, phò tá, năng lực tổ chức, ngoại giao tốt. Mang tính chất quần chúng, bạn bè, đồng nghiệp.",
+  "Hữu Bật": "Chủ về sự trợ giúp, phò tá, năng lực tổ chức, ngoại giao tốt. Mang tính chất quần chúng, bạn bè, đồng nghiệp.",
+  "Văn Xương": "Chủ về khoa giáp, học hành, văn chương, nghệ thuật, sự thông minh, khéo léo.",
+  "Văn Khúc": "Chủ về khoa giáp, học hành, văn chương, nghệ thuật, sự thông minh, khéo léo, tài ăn nói.",
+  "Thiên Khôi": "Chủ về sự thông minh, xuất chúng, đứng đầu, quý nhân phù trợ (thường là nam giới hoặc người lớn tuổi).",
+  "Thiên Việt": "Chủ về sự thông minh, xuất chúng, quý nhân phù trợ (thường là nữ giới hoặc người trẻ tuổi).",
+  "Kình Dương": "Chủ về sự tranh chấp, hình khắc, mổ xẻ, tai nạn, sự quyết liệt, bướng bỉnh.",
+  "Đà La": "Chủ về sự cản trở, trì trệ, thị phi, ám muội, thâm hiểm.",
+  "Hỏa Tinh": "Chủ về sự nóng nảy, bộc phát, tai nạn lửa điện, sự nhiệt tình, nhanh nhẹn.",
+  "Linh Tinh": "Chủ về sự nóng nảy, bộc phát, tai nạn lửa điện, sự nhiệt tình, nhanh nhẹn nhưng ngấm ngầm hơn Hỏa Tinh.",
+  "Địa Không": "Chủ về sự mất mát, hao hụt, ảo tưởng, sự phá cách, tư duy khác người.",
+  "Địa Kiếp": "Chủ về sự mất mát, hao hụt, tai nạn bất ngờ, sự phá cách, liều lĩnh.",
+  "Lộc Tồn": "Chủ về tài lộc, sự cẩn trọng, cô độc, chậm chạp, sự bảo thủ.",
+  "Hóa Lộc": "Chủ về tài lộc, sự khởi đầu, duyên phận, sự vui vẻ, thuận lợi.",
+  "Hóa Quyền": "Chủ về quyền lực, sự quyết đoán, năng lực lãnh đạo, sự tranh chấp.",
+  "Hóa Khoa": "Chủ về khoa giáp, danh tiếng, sự giải cứu, sự thanh minh, học thức.",
+  "Hóa Kỵ": "Chủ về sự cản trở, thị phi, rắc rối, sự kết thúc, sự cố chấp.",
+  "Thiên Mã": "Chủ về sự di chuyển, thay đổi, nghị lực, sự thăng tiến.",
+  "Thiên Khốc": "Chủ về sự buồn rầu, nước mắt, sự vang danh (nếu đắc địa).",
+  "Thiên Hư": "Chủ về sự hư hao, buồn rầu, sự giả tạo.",
+  "Thái Tuế": "Chủ về sự thị phi, tranh chấp, lời ăn tiếng nói, sự chính danh.",
+  "Đào Hoa": "Chủ về tình duyên, sự quyến rũ, nghệ thuật, sự lãng mạn.",
+  "Hồng Loan": "Chủ về tình duyên, sự may mắn, hỷ sự, sự lãng mạn.",
+  "Thiên Hỷ": "Chủ về niềm vui, hỷ sự, sự may mắn.",
+  "Thiên Hình": "Chủ về hình phạt, pháp luật, mổ xẻ, sự nghiêm minh.",
+  "Thiên Riêu": "Chủ về sự đào hoa, ám muội, nghệ thuật, sự lãng mạn.",
+  "Thiên Diêu": "Chủ về sự đào hoa, ám muội, nghệ thuật, sự lãng mạn.",
+  "Thiên Y": "Chủ về y lý, thuốc men, sự sạch sẽ.",
+  "Đại Hao": "Chủ về sự hao tán tài lộc, sự thay đổi, sự rộng rãi.",
+  "Tiểu Hao": "Chủ về sự hao tán tài lộc (mức độ nhỏ), sự thay đổi, sự rộng rãi.",
+  "Quốc Ấn": "Chủ về quyền hành, ấn tín, sự thăng tiến.",
+  "Đường Phù": "Chủ về nhà cửa, đất đai, sự uy nghi.",
+  "Bạch Hổ": "Chủ về máu huyết, tai nạn, sự dũng mãnh, sự tang tóc.",
+  "Tang Môn": "Chủ về sự tang tóc, buồn rầu, sự lo âu.",
+  "Hoa Cái": "Chủ về sự đài các, uy nghi, sự tôn giáo, sự cô độc.",
+  "Long Trì": "Chủ về sự thanh nhã, may mắn, nhà cửa đẹp đẽ.",
+  "Phượng Các": "Chủ về sự thanh nhã, may mắn, nhà cửa đẹp đẽ.",
+  "Thiên Quan": "Chủ về quý nhân, sự cứu giải, sự từ thiện.",
+  "Thiên Phúc": "Chủ về quý nhân, sự cứu giải, sự từ thiện.",
+  "Ân Quang": "Chủ về quý nhân, sự cứu giải, sự vinh hiển.",
+  "Thiên Quý": "Chủ về quý nhân, sự cứu giải, sự vinh hiển.",
+  "Thiên Giải": "Chủ về sự giải tai ách, sự may mắn.",
+  "Địa Giải": "Chủ về sự giải tai ách, sự may mắn.",
+  "Giải Thần": "Chủ về sự giải tai ách, sự chia ly.",
+  "Thiên Không": "Chủ về sự giác ngộ, sự mất mát, sự thông minh.",
+  "Tuần": "Chủ về sự cản trở, bao bọc, sự chậm trễ.",
+  "Triệt": "Chủ về sự cắt đứt, phá vỡ, sự cản trở mạnh mẽ.",
+  "Cô Thần": "Chủ về sự cô độc, khó tính, sự độc lập.",
+  "Quả Tú": "Chủ về sự cô độc, khó tính, sự độc lập.",
+  "Kiếp Sát": "Chủ về tai nạn, mổ xẻ, sự cản trở.",
+  "Thiếu Dương": "Chủ về sự thông minh, nhân hậu, vui vẻ, hòa nhã, giải trừ được tai họa nhỏ.",
+  "Thiếu Âm": "Chủ về sự hiền lành, nhân hậu, nhường nhịn, đôi khi dễ bị thua thiệt.",
+  "Long Đức": "Chủ về sự nhân hậu, đức độ, giải trừ tai ách, mang lại may mắn.",
+  "Phúc Đức": "Chủ về sự nhân hậu, từ thiện, giải trừ tai ách, mang lại may mắn, phúc lộc.",
+  "Bác Sĩ": "Chủ về sự thông minh, học thức, khoan dung, nhân hậu, giải trừ ốm đau.",
+  "Lực Sĩ": "Chủ về sức mạnh, quyền uy, dũng mãnh, nhưng đôi khi nóng nảy.",
+  "Thanh Long": "Chủ về sự may mắn, hỷ sự, công danh, sự thanh nhã, vui vẻ.",
+  "Tướng Quân": "Chủ về sự dũng mãnh, quyền uy, lãnh đạo, kiêu ngạo, nóng nảy.",
+  "Tấu Thư": "Chủ về giấy tờ, văn thư, lời ăn tiếng nói khéo léo, sự thanh nhã.",
+  "Hỷ Thần": "Chủ về niềm vui, hỷ sự, sự may mắn, thi cử đỗ đạt.",
+  "Quan Phù": "Chủ về sự giúp đỡ của quý nhân, sự thăng tiến, nhưng cũng dễ dính dáng đến pháp luật nếu đi cùng sát tinh.",
+  "Tử Phù": "Chủ về sự buồn rầu, tang tóc, sự cản trở, rắc rối nhỏ.",
+  "Tuế Phá": "Chủ về sự chống đối, phá phách, ngang bướng, hao tài tốn của.",
+  "Điếu Khách": "Chủ về sự buồn rầu, tang tóc, khách khứa, sự ăn chơi, cờ bạc.",
+  "Trực Phù": "Chủ về sự thẳng thắn, bộc trực, đôi khi gây mất lòng, sự buồn rầu, hao hụt.",
+  "Phi Liêm": "Chủ về sự nhanh nhẹn, vui vẻ, nhưng cũng chủ về sự chia ly, thị phi, tóc tai.",
+  "Bệnh Phù": "Chủ về ốm đau, bệnh tật, sự suy nhược, buồn rầu.",
+  "Phục Binh": "Chủ về sự ám muội, lừa gạt, trộm cắp, sự cản trở ngầm.",
+  "Quan Phủ": "Chủ về sự kiện tụng, pháp luật, thị phi, rắc rối giấy tờ.",
+  "Đài Phụ": "Chủ về sự tôn quý, chức vị, sự hỗ trợ cho công danh.",
+  "Phong Cáo": "Chủ về sự ban thưởng, sắc phong, bằng cấp, danh tiếng.",
+  "Tràng Sinh": "Chủ về sự khởi đầu, sinh sôi nảy nở, trường thọ, phúc lộc dồi dào.",
+  "Mộc Dục": "Chủ về sự tắm gội, đổi mới, nhưng cũng mang tính đào hoa, chưng diện, dễ thay đổi.",
+  "Quan Đới": "Chủ về sự trưởng thành, phát triển, công danh, chức vụ, sự đai mũ.",
+  "Lâm Quan": "Chủ về sự thịnh vượng, phát đạt, công danh hiển đạt, sự tự lập.",
+  "Đế Vượng": "Chủ về sự tột đỉnh của thịnh vượng, uy quyền, tài lộc dồi dào, sức khỏe tốt.",
+  "Suy": "Chủ về sự suy thoái, yếu kém, giảm sút về thể chất hoặc tài lộc.",
+  "Bệnh": "Chủ về ốm đau, bệnh tật, sự suy nhược, buồn rầu.",
+  "Tử": "Chủ về sự kết thúc, chết chóc, sự tĩnh lặng, khép kín.",
+  "Mộ": "Chủ về sự che giấu, chôn vùi, sự bảo thủ, nhưng cũng là kho tàng (nếu hội cát tinh).",
+  "Tuyệt": "Chủ về sự cạn kiệt, dứt khoát, sự cô độc, nhưng cũng có thể là sự bứt phá (Tuyệt xứ phùng sinh).",
+  "Thai": "Chủ về sự phôi thai, hy vọng, sự khởi đầu mới, sự ngây thơ.",
+  "Dưỡng": "Chủ về sự nuôi dưỡng, chăm sóc, sự phát triển từ từ, sự cẩn trọng.",
+  "Thiên La": "Chủ về lưới trời, sự cản trở, sự bó buộc.",
+  "Địa Võng": "Chủ về lưới đất, sự cản trở, sự bó buộc.",
+  "Đẩu Quân": "Chủ về sự cô độc, sự nghiêm khắc, sự đo lường.",
+  "Lưu Hà": "Chủ về sông nước, sự trôi chảy, tài ăn nói.",
+  "Thiên Khách": "Chủ về sự di chuyển, khách khứa.",
+  "Thiên Trù": "Chủ về ăn uống, lộc ăn, sự khéo léo trong ẩm thực.",
+  "Thiên Thọ": "Chủ về tuổi thọ, sự điềm đạm, nhân hậu.",
+  "Thiên Tài": "Chủ về tài năng, sự nhạy bén, che giấu.",
+  "Phá Toái": "Chủ về sự phá ngang, cản trở, sự bướng bỉnh.",
+  "Lộc Giác": "Chủ về sự cản trở, rắc rối.",
+  "Bát Tọa": "Chủ về sự bệ vệ, an nhàn, có người hầu hạ.",
+  "Tam Thai": "Chủ về sự bệ vệ, an nhàn, có người hầu hạ.",
+  "Lưu Niên Văn Tinh": "Chủ về học hành, thi cử, văn chương trong năm.",
+  "L.Thái Tuế": "Chủ về sự kiện quan trọng, thị phi, thay đổi trong năm.",
+  "L.Lộc Tồn": "Chủ về tài lộc, cơ hội tiền bạc trong năm.",
+  "L.Kình Dương": "Chủ về sự va chạm, tranh chấp, mổ xẻ trong năm.",
+  "L.Đà La": "Chủ về sự cản trở, trì trệ, rắc rối trong năm.",
+  "L.Thiên Mã": "Chủ về sự di chuyển, thay đổi công việc, chỗ ở trong năm.",
+  "L.Bạch Hổ": "Chủ về máu huyết, ốm đau, tang tóc trong năm.",
+  "L.Thiên Khốc": "Chủ về sự buồn rầu, lo âu, nước mắt trong năm.",
+  "L.Thiên Hư": "Chủ về sự hư hao, thất vọng, buồn rầu trong năm.",
+  "L.Tang Môn": "Chủ về sự tang tóc, ốm đau, lo âu trong năm."
+};
