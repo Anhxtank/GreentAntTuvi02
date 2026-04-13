@@ -479,7 +479,7 @@ export default function App() {
                 </label>
                 <input
                   type="text"
-                  placeholder="NHẬP HỌ TÊN..."
+                  placeholder="NHẬP TÊN..."
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   className="w-full bg-gray-50 border border-gray-200 rounded px-3 py-2 text-sm font-mono font-medium text-black focus:outline-none focus:border-black transition-all uppercase placeholder:text-gray-300"
