@@ -28,11 +28,11 @@ export const TuviCenter = React.memo(({ centerData, onCachCucClick, theme }: Cen
 
   return (
     <div 
-      className={`col-span-2 row-span-2 relative z-0 flex flex-col items-center justify-center p-4 md:p-6 text-center border border-gray-200 ${theme?.cellBackgroundColor ? '' : 'bg-white'}`}
+      className={`col-span-2 row-span-2 relative z-0 flex flex-col items-center justify-center p-2 sm:p-4 md:p-6 text-center border border-gray-200 ${theme?.cellBackgroundColor ? '' : 'bg-white'}`}
       style={theme?.cellBackgroundColor ? { backgroundColor: theme.cellBackgroundColor } : {}}
     >
       {/* Center Info Area */}
-      <div className="w-full h-full flex flex-col justify-center items-center space-y-3 md:space-y-4">
+      <div className="w-full h-full flex flex-col justify-center items-center space-y-1 sm:space-y-3 md:space-y-4 overflow-y-auto hide-scrollbar">
         
         <div className="space-y-1">
           <h2 className={`text-size-11 font-sans font-bold uppercase tracking-widest`} style={{ color: theme?.textColor || 'black' }}>
@@ -56,7 +56,7 @@ export const TuviCenter = React.memo(({ centerData, onCachCucClick, theme }: Cen
 
         <div className="w-12 h-px" style={{ backgroundColor: theme?.textColor || 'black' }}></div>
 
-        <div className={`grid grid-cols-2 gap-x-4 md:gap-x-8 gap-y-1 md:gap-y-2 text-size-9 font-mono`} style={{ color: theme?.textColor || 'black' }}>
+        <div className={`grid grid-cols-2 gap-x-2 md:gap-x-8 gap-y-0.5 md:gap-y-2 text-size-9 font-mono`} style={{ color: theme?.textColor || 'black' }}>
           <div className={`${subTextColor} capitalize`}>Dương lịch:</div>
           <div className="text-left">{centerData.solarDate}</div>
           

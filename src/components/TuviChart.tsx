@@ -4,6 +4,7 @@ import { STAR_MEANINGS, MINOR_STAR_MEANINGS } from '../utils/starMeanings';
 import { HOUSE_EXPLANATIONS, DIEP_DUNG_LABELS, getDiepDungMeaning, TRUC_MEANINGS, getTrucName } from '../utils/houseMeanings';
 import { THAP_NHI_HUYEN_DO, getLayoutName, STAR_YIN_YANG, getEncounterMeaning } from '../utils/thapNhiHuyenDo';
 import { ScrollPicker } from './ScrollPicker';
+import { Maximize2, Minimize2 } from 'lucide-react';
 
 import { TuviCell } from './TuviCell';
 import { TuviCenter } from './TuviCenter';
@@ -167,6 +168,7 @@ export const TuviChart = React.memo(({
   const [selectedCachCuc, setSelectedCachCuc] = useState<CachCuc | null>(null);
   const [internalSelectedStar, setInternalSelectedStar] = useState<{ name: string; chi: number } | null>(null);
   const [isStarModalOpen, setIsStarModalOpen] = useState(false);
+  const [isZoomed, setIsZoomed] = useState(false);
   
   const selectedStar = externalSelectedStar !== undefined ? externalSelectedStar : internalSelectedStar;
   const setSelectedStar = (star: { name: string; chi: number } | null) => {
@@ -325,8 +327,26 @@ export const TuviChart = React.memo(({
   };
 
   return (
-    <div className="relative w-full aspect-square landscape:max-lg:aspect-[4/3] portrait:max-lg:aspect-[3/4] border-2 border-black bg-white rounded-xl overflow-hidden shadow-sm">
-      <div className="absolute inset-0 grid grid-cols-4 grid-rows-4">
+    <div className={`relative w-full border-2 border-black bg-white rounded-xl shadow-sm [container-type:inline-size] overflow-auto hide-scrollbar transition-all duration-500 ${isZoomed ? 'fixed inset-4 z-[100] w-auto h-auto' : ''}`}>
+      {/* Zoom Toggle for Mobile */}
+      <button 
+        onClick={() => setIsZoomed(!isZoomed)}
+        className="absolute top-2 right-2 z-50 p-2 bg-white/90 backdrop-blur-sm border border-black rounded-lg shadow-sm lg:hidden flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest"
+      >
+        {isZoomed ? (
+          <>
+            <Minimize2 size={14} />
+            <span>Thu nhỏ</span>
+          </>
+        ) : (
+          <>
+            <Maximize2 size={14} />
+            <span>Phóng to</span>
+          </>
+        )}
+      </button>
+
+      <div className={`grid grid-cols-4 grid-rows-4 w-full h-full transition-all duration-500 ${isZoomed ? 'min-w-[800px] min-h-[800px]' : 'min-w-[500px] sm:min-w-[600px]'} aspect-square landscape:max-lg:aspect-[4/3] portrait:max-lg:aspect-[3/4] sm:landscape:max-lg:aspect-video`}>
         {renderCell(5)}
         {renderCell(6)}
         {renderCell(7)}
@@ -467,7 +487,57 @@ export const TuviChart = React.memo(({
             </div>
 
             {/* Content */}
-            <div className="flex-1 overflow-y-auto p-6 space-y-6">
+            <div className="flex-1 overflow-y-auto p-6 space-y-8">
+              {/* Stars Section */}
+              <section>
+                <h4 className="text-xs font-sans font-bold text-gray-500 uppercase tracking-widest mb-4 border-b border-[#E5E2DD] pb-1">Các sao trong cung</h4>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  {/* Major Stars */}
+                  <div className="space-y-3">
+                    <div className="text-[10px] font-bold text-gray-400 uppercase tracking-wider">Chính tinh</div>
+                    <div className="flex flex-col gap-2">
+                      {stars[selectedChi]?.length > 0 ? (
+                        stars[selectedChi].map((star: string, idx: number) => (
+                          <div key={idx} className="text-sm font-bold uppercase" style={{ color: getStarColor(star.split(' (')[0]) }}>
+                            {star}
+                          </div>
+                        ))
+                      ) : (
+                        <div className="text-sm text-gray-400 italic">Vô chính diệu</div>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Minor Stars */}
+                  <div className="space-y-4">
+                    <div className="grid grid-cols-2 gap-4">
+                      <div className="space-y-2">
+                        <div className="text-[10px] font-bold text-gray-400 uppercase tracking-wider">Cát tinh</div>
+                        <div className="flex flex-col gap-1">
+                          {goodStars[selectedChi]?.map((star: string, idx: number) => (
+                            <div key={idx} className="text-xs font-medium" style={{ color: getStarColor(star) }}>{star}</div>
+                          ))}
+                          {luuGoodStars[selectedChi]?.map((star: string, idx: number) => (
+                            <div key={idx} className="text-xs font-medium italic" style={{ color: getStarColor(star) }}>{star} (L)</div>
+                          ))}
+                        </div>
+                      </div>
+                      <div className="space-y-2">
+                        <div className="text-[10px] font-bold text-gray-400 uppercase tracking-wider">Hung tinh</div>
+                        <div className="flex flex-col gap-1">
+                          {badStars[selectedChi]?.map((star: string, idx: number) => (
+                            <div key={idx} className="text-xs font-medium" style={{ color: getStarColor(star) }}>{star}</div>
+                          ))}
+                          {luuBadStars[selectedChi]?.map((star: string, idx: number) => (
+                            <div key={idx} className="text-xs font-medium italic" style={{ color: getStarColor(star) }}>{star} (L)</div>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
               {/* Meaning Section */}
               <section>
                 <h4 className="text-xs font-sans font-bold text-gray-500 uppercase tracking-widest mb-3 border-b border-[#E5E2DD] pb-1">Ý nghĩa cung vị</h4>

@@ -64,7 +64,7 @@ export const TuviCell = React.memo(({
       onClick={() => onSelect(chi)}
       onMouseEnter={() => onHover(chi)}
       onMouseLeave={() => onHover(null)}
-      className={`flex flex-col relative p-2 cursor-pointer transition-all duration-300 ease-out border ${bgColor} ${borderColor} ${zIndex} ${shadow}`}
+      className={`flex flex-col relative p-1 sm:p-2 cursor-pointer transition-all duration-300 ease-out border ${bgColor} ${borderColor} ${zIndex} ${shadow}`}
       style={cellStyle}
     >
       {/* Top: House Name, Than, Can Chi, Nap Am */}
@@ -128,7 +128,7 @@ export const TuviCell = React.memo(({
       </div>
 
       {/* Middle: Major Stars (UPPERCASE) */}
-      <div className={`flex flex-col justify-start items-center gap-0.5 mt-2 z-10 transition-opacity duration-300 ${isHighlighted ? 'opacity-100' : 'opacity-80'}`}>
+      <div className={`flex flex-col justify-start items-center gap-0.5 mt-1 sm:mt-2 z-10 transition-opacity duration-300 ${isHighlighted ? 'opacity-100' : 'opacity-80'} overflow-y-auto hide-scrollbar`}>
         {cellStars.length > 0 ? (
           <>
             {cellStars.map((star: string, idx: number) => {
@@ -159,9 +159,9 @@ export const TuviCell = React.memo(({
       </div>
 
       {/* Minor & Luu Stars */}
-      <div className={`flex-1 flex w-full justify-between items-start mt-1 z-10 transition-opacity duration-300 ${isHighlighted ? 'opacity-100' : 'opacity-80'} overflow-hidden`}>
-        {/* Cát tinh (Left) - 1 or 2 columns based on screen */}
-        <div className="grid grid-cols-1 landscape:max-lg:grid-cols-2 lg:grid-cols-1 gap-x-1 gap-y-0 items-start content-start text-left w-[48%]">
+      <div className={`flex-1 flex w-full justify-between items-start mt-1 z-10 transition-opacity duration-300 ${isHighlighted ? 'opacity-100' : 'opacity-80'} overflow-y-auto hide-scrollbar`}>
+        {/* Cát tinh (Left) */}
+        <div className="flex flex-wrap gap-x-1 gap-y-0 items-start content-start text-left w-[49%]">
           {allGoodStars.map((star: any, idx: number) => {
             const [name, brightness] = star.name.split(' (');
             const cleanName = name.trim();
@@ -182,8 +182,8 @@ export const TuviCell = React.memo(({
             );
           })}
         </div>
-        {/* Hung/Sát tinh (Right) - 1 or 2 columns based on screen */}
-        <div className="grid grid-cols-1 landscape:max-lg:grid-cols-2 lg:grid-cols-1 gap-x-1 gap-y-0 items-start content-start text-right w-[48%]">
+        {/* Hung/Sát tinh (Right) */}
+        <div className="flex flex-wrap justify-end gap-x-1 gap-y-0 items-start content-start text-right w-[49%]">
           {allBadStars.map((star: any, idx: number) => {
             const [name, brightness] = star.name.split(' (');
             const cleanName = name.trim();

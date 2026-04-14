@@ -106,23 +106,25 @@
   .hide-scrollbar::-webkit-scrollbar {
     display: none;
   }
+  
+  /* Fluid text sizes based on container width */
   .text-size-11 {
-    @apply text-[6px] md:text-[8px] lg:text-[11px];
+    font-size: clamp(6px, 1.8cqw, 11px);
   }
   .text-size-10 {
-    @apply text-[5.5px] md:text-[7.5px] lg:text-[10px];
+    font-size: clamp(5.5px, 1.6cqw, 10px);
   }
   .text-size-9 {
-    @apply text-[5px] md:text-[6.5px] lg:text-[9px];
+    font-size: clamp(5px, 1.4cqw, 9px);
   }
   .text-size-8 {
-    @apply text-[4.5px] md:text-[6px] lg:text-[8px];
+    font-size: clamp(4.5px, 1.2cqw, 8px);
   }
   .text-size-7 {
-    @apply text-[4px] md:text-[5px] lg:text-[7px];
+    font-size: clamp(4px, 1cqw, 7px);
   }
   .text-size-2xl {
-    @apply text-[12px] md:text-[18px] lg:text-2xl;
+    font-size: clamp(12px, 4cqw, 24px);
   }
 }
 

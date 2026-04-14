@@ -63,6 +63,10 @@ export default function App() {
   } | null>(null);
   const [showThemeModal, setShowThemeModal] = useState(false);
   const [selectedStar, setSelectedStar] = useState<{ name: string; chi: number } | null>(null);
+  const [showStickyHeader, setShowStickyHeader] = useState(false);
+  const [showScrollTop, setShowScrollTop] = useState(false);
+  const formRef = useRef<HTMLDivElement>(null);
+  
   const [theme, setTheme] = useState<ChartTheme>(() => {
     const saved = localStorage.getItem('tuvi_chart_theme');
     if (saved) {
@@ -84,6 +88,18 @@ export default function App() {
   useEffect(() => {
     localStorage.setItem('tuvi_chart_theme', JSON.stringify(theme));
   }, [theme]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (formRef.current) {
+        const rect = formRef.current.getBoundingClientRect();
+        setShowStickyHeader(rect.bottom < 0);
+      }
+      setShowScrollTop(window.scrollY > 1000);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
   
   const chatbotRef = useRef<ChatbotRef | null>(null);
   const chartRef = useRef<HTMLDivElement>(null);
@@ -441,11 +457,47 @@ export default function App() {
   }, [year, month, day, hour, minute, debouncedName, gender, viewYear]);
 
   return (
-    <div className="min-h-screen bg-slate-50 flex items-center justify-center p-4 md:p-8 font-sans">
-      <div className="w-full max-w-7xl grid grid-cols-1 lg:grid-cols-12 gap-8">
+    <div className="min-h-screen bg-slate-50 flex items-start justify-center p-2 sm:p-4 md:p-8 font-sans">
+      {/* Sticky Header for Mobile */}
+      {showStickyHeader && (
+        <div className="fixed top-0 left-0 right-0 z-[60] bg-white/90 backdrop-blur-md border-b border-black p-3 flex items-center justify-between lg:hidden animate-in slide-in-from-top duration-300 shadow-sm">
+          <div className="flex items-center gap-3">
+            <div className="w-8 h-8 bg-black rounded-full flex items-center justify-center text-white text-[10px] font-bold">
+              {gender === 'Nam' ? '♂' : '♀'}
+            </div>
+            <div className="flex flex-col">
+              <p className="text-[9px] font-sans font-bold uppercase tracking-widest text-gray-500 leading-none mb-1">Đang xem lá số</p>
+              <p className="text-xs font-sans font-bold uppercase tracking-tight truncate max-w-[150px] leading-none">
+                {name || 'ẨN DANH'}
+              </p>
+            </div>
+          </div>
+          <button 
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            className="bg-black text-white px-4 py-2 rounded-full text-[9px] font-bold uppercase tracking-widest hover:bg-gray-800 transition-colors active:scale-95"
+          >
+            Sửa thông tin
+          </button>
+        </div>
+      )}
+
+      {/* Scroll to Top Button */}
+      {showScrollTop && (
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          className="fixed bottom-24 right-6 z-[60] w-10 h-10 bg-white border border-black rounded-full shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] flex items-center justify-center hover:shadow-none hover:translate-x-[1px] hover:translate-y-[1px] transition-all active:scale-90"
+          title="Cuộn lên đầu trang"
+        >
+          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
+          </svg>
+        </button>
+      )}
+
+      <div className="w-full max-w-7xl grid grid-cols-1 lg:grid-cols-12 gap-4 md:gap-8 items-start">
         
         {/* Left Sidebar: Input Form */}
-        <div className="lg:col-span-4 space-y-6">
+        <div ref={formRef} className="lg:col-span-4 space-y-4 md:space-y-6 lg:sticky lg:top-8">
           {/* Real-time Date Display */}
           <div className="bg-black text-white rounded-xl p-4 shadow-lg border border-black flex items-center justify-between">
             <div className="flex items-center gap-3">
@@ -651,10 +703,10 @@ export default function App() {
         </div>
 
         {/* Right Main Area */}
-        <div className="lg:col-span-8 flex flex-col gap-6">
+        <div className="lg:col-span-8 flex flex-col gap-4 md:gap-6">
           {lunarData ? (
-            <div className="flex flex-col gap-6">
-              <div ref={chartRef} className="bg-white p-4 rounded-xl shadow-sm border border-black">
+            <div className="flex flex-col gap-4 md:gap-6">
+              <div ref={chartRef} className="bg-white p-1 sm:p-4 rounded-xl shadow-sm border border-black">
                 <TuviChart 
                   {...lunarData}
                   centerData={lunarData.centerData}
